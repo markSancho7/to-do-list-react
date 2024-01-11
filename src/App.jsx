@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import Task from './task/Task';
+import Task from './components/task/Task';
 import { v4 } from 'uuid';
+import { StyledContainerInput, StyledInput, StyledLabel } from './styles';
 
 const App = () => {
 	const [tasks, setTasks] = useState([]);
@@ -8,20 +9,27 @@ const App = () => {
 	return (
 		<>
 			<form action='' onSubmit={event => createTasks(event, tasks, setTasks)}>
-				<input name='task'></input>
+				<StyledContainerInput>
+					<StyledLabel></StyledLabel>
+					<StyledInput name='task' placeholder='escribe tu tarea'></StyledInput>
+				</StyledContainerInput>
 			</form>
-			{tasks.map(task => {
-				return (
-					<Task
-						key={task.id}
-						{...task}
-						action={() => completeTask(task.id, tasks, setTasks)}
-					></Task>
-				);
-			})}
+			<div>
+				{tasks.map(task => {
+					return (
+						<Task
+							key={task.id}
+							{...task}
+							action={() => completeTask(task.id, tasks, setTasks)}
+							actionRemove={() => removeTask(task.id, tasks, setTasks)}
+						></Task>
+					);
+				})}
+			</div>
 		</>
 	);
 };
+
 const createTasks = (event, tasks, setTasks) => {
 	event.preventDefault();
 
@@ -35,12 +43,16 @@ const createTasks = (event, tasks, setTasks) => {
 };
 
 const completeTask = (taskId, tasks, setTasks) => {
-	console.log(taskId);
-	if (tasks.id === taskId) {
-		tasks.completed = !completed;
-		setTasks(tasks.completed);
-		console.log(tasks);
-	}
+	const tasksUpdated = tasks.map(task => {
+		if (task.id === taskId) {
+			task.completed = !task.completed;
+		}
+		return task;
+	});
+	setTasks(tasksUpdated);
 };
-
+const removeTask = (taskId, tasks, setTasks) => {
+	const tasksUpdated = tasks.filter(task => task.id !== taskId);
+	return setTasks(tasksUpdated);
+};
 export default App;

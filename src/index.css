@@ -1,4 +1,13 @@
 body {
+	margin: 0px;
+	padding: 0px;
+	max-width: 100%;
 	font-family: sans-serif;
 	background-color: grey;
+}
+img {
+	margin-top: -40px;
+	width: 100%;
+	position: absolute;
+	z-index: -2;
 }

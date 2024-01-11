@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import Task from './components/task/Task';
 import { v4 } from 'uuid';
-import { StyledContainerInput, StyledInput, StyledLabel } from './styles';
+import {
+	StyledContainerInput,
+	StyledInput,
+	StyledLabel,
+	SyledContainerFilters
+} from './styles';
 import Filters from './components/filters/Filters';
+import ClearCompleted from './components/clearCompleted/ClearCompleted';
 
 const App = () => {
 	const [tasks, setTasks] = useState([]);
@@ -11,6 +17,7 @@ const App = () => {
 	const filteredTasks = filterTasks(filter, tasks);
 	return (
 		<>
+			<img src='./public/images 3/bg-mobile-light.jpg' alt='' />
 			<form action='' onSubmit={event => createTasks(event, tasks, setTasks)}>
 				<StyledContainerInput>
 					<StyledLabel></StyledLabel>
@@ -29,7 +36,12 @@ const App = () => {
 					);
 				})}
 			</div>
-			<Filters setFilter={setFilter}></Filters>
+			<SyledContainerFilters>
+				<Filters setFilter={setFilter}></Filters>
+				<ClearCompleted
+					actionClearCompleted={() => clearCompletedTask(tasks, setTasks)}
+				></ClearCompleted>
+			</SyledContainerFilters>
 		</>
 	);
 };
@@ -78,9 +90,14 @@ const completeTask = (taskId, tasks, setTasks) => {
 	});
 	setTasks(tasksUpdated);
 };
+const clearCompletedTask = (tasks, setTasks) => {
+	const tasksUpdated = tasks.filter(task => !task.completed);
+	return setTasks(tasksUpdated);
+};
 
 const removeTask = (taskId, tasks, setTasks) => {
 	const tasksUpdated = tasks.filter(task => task.id !== taskId);
 	return setTasks(tasksUpdated);
 };
+
 export default App;

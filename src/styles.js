@@ -1,5 +1,13 @@
 import { styled } from 'styled-components';
 
+const SyledContainerFilters = styled.div`
+	display: flex;
+	width: 450px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+`;
+
 const StyledContainerInput = styled.div`
 	width: 450px;
 	padding: 0px 0px;
@@ -41,4 +49,9 @@ const StyledLabel = styled.label`
 	}
 `;
 
-export { StyledInput, StyledContainerInput, StyledLabel };
+export {
+	StyledInput,
+	StyledContainerInput,
+	StyledLabel,
+	SyledContainerFilters
+};

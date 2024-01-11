@@ -2,8 +2,7 @@ import {
 	StyledContainerButtons,
 	StyledAllTasks,
 	StyledActiveTasks,
-	StyledCompletedTasks,
-	StyledClearCompleted
+	StyledCompletedTasks
 } from './styles';
 const Filters = ({ setFilter }) => {
 	return (
@@ -17,7 +16,6 @@ const Filters = ({ setFilter }) => {
 			<StyledCompletedTasks onClick={() => setFilter('completed')}>
 				Completed Tasks
 			</StyledCompletedTasks>
-			<StyledClearCompleted>Clear Completed</StyledClearCompleted>
 		</StyledContainerButtons>
 	);
 };

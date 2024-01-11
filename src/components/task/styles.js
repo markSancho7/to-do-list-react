@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const StyledContainerTask = styled.div`
 	display: flex;
+	position: relative;
 	width: 450px;
 	height: 45px;
 	background-color: black;
@@ -14,6 +15,22 @@ const StyledCheckbox = styled.input`
 	margin-left: 10px;
 	margin-top: auto;
 	margin-bottom: auto;
+`;
+const StyledLabel = styled.label`
+	color: white;
+	margin-left: 40px;
+	&::before {
+		content: '';
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		border: 1px solid #fff;
+		border-radius: 10px;
+		transform: translateY(-50%);
+		left: 18px;
+		background-color: black;
+		top: 50%;
+	}
 `;
 
 const StyledNameTask = styled.p`
@@ -30,4 +47,10 @@ const StyledButton = styled.button`
 	background: none;
 	color: white;
 `;
-export { StyledContainerTask, StyledNameTask, StyledButton, StyledCheckbox };
+export {
+	StyledContainerTask,
+	StyledNameTask,
+	StyledButton,
+	StyledCheckbox,
+	StyledLabel
+};

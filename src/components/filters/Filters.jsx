@@ -5,12 +5,18 @@ import {
 	StyledCompletedTasks,
 	StyledClearCompleted
 } from './styles';
-const Filters = () => {
+const Filters = ({ setFilter }) => {
 	return (
 		<StyledContainerButtons>
-			<StyledAllTasks>All Tasks</StyledAllTasks>
-			<StyledActiveTasks>Active Tasks</StyledActiveTasks>
-			<StyledCompletedTasks>Completed Tasks</StyledCompletedTasks>
+			<StyledAllTasks onClick={() => setFilter('all')}>
+				All Tasks
+			</StyledAllTasks>
+			<StyledActiveTasks onClick={() => setFilter('active')}>
+				Active Tasks
+			</StyledActiveTasks>
+			<StyledCompletedTasks onClick={() => setFilter('completed')}>
+				Completed Tasks
+			</StyledCompletedTasks>
 			<StyledClearCompleted>Clear Completed</StyledClearCompleted>
 		</StyledContainerButtons>
 	);

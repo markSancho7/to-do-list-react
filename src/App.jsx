@@ -6,7 +6,9 @@ import Filters from './components/filters/Filters';
 
 const App = () => {
 	const [tasks, setTasks] = useState([]);
+	const [filter, setFilter] = useState('all');
 
+	const filteredTasks = filterTasks(filter, tasks);
 	return (
 		<>
 			<form action='' onSubmit={event => createTasks(event, tasks, setTasks)}>
@@ -16,7 +18,7 @@ const App = () => {
 				</StyledContainerInput>
 			</form>
 			<div>
-				{tasks.map(task => {
+				{filteredTasks.map(task => {
 					return (
 						<Task
 							key={task.id}
@@ -27,9 +29,31 @@ const App = () => {
 					);
 				})}
 			</div>
-			<Filters></Filters>
+			<Filters setFilter={setFilter}></Filters>
 		</>
 	);
+};
+
+const filterByCompleted = tasks => {
+	const tasksUpdated = tasks.filter(task => task.completed);
+	return tasksUpdated;
+};
+
+const filterByActive = tasks => {
+	const tasksUpdated = tasks.filter(task => !task.completed);
+	return tasksUpdated;
+};
+
+const filterTasks = (filter, tasks) => {
+	if (filter === 'active') {
+		return filterByActive(tasks);
+	}
+
+	if (filter === 'completed') {
+		return filterByCompleted(tasks);
+	}
+
+	return [...tasks];
 };
 
 const createTasks = (event, tasks, setTasks) => {
@@ -54,6 +78,7 @@ const completeTask = (taskId, tasks, setTasks) => {
 	});
 	setTasks(tasksUpdated);
 };
+
 const removeTask = (taskId, tasks, setTasks) => {
 	const tasksUpdated = tasks.filter(task => task.id !== taskId);
 	return setTasks(tasksUpdated);

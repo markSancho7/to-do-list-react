@@ -5,11 +5,15 @@ import {
 	StyledNameTask
 } from './styles';
 
-const Task = ({ nameTask, action, actionRemove }) => {
+const Task = ({ nameTask, completed, action, actionRemove }) => {
 	return (
 		<StyledContainerTask>
 			<StyledContainerTask>
-				<StyledCheckbox type='checkbox' onChange={action}></StyledCheckbox>
+				<StyledCheckbox
+					type='checkbox'
+					onChange={action}
+					checked={completed}
+				></StyledCheckbox>
 				<StyledNameTask>{nameTask}</StyledNameTask>
 			</StyledContainerTask>
 			<StyledButton onClick={actionRemove}>X</StyledButton>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Task from './components/task/Task';
 import { v4 } from 'uuid';
 import { StyledContainerInput, StyledInput, StyledLabel } from './styles';
+import Filters from './components/filters/Filters';
 
 const App = () => {
 	const [tasks, setTasks] = useState([]);
@@ -26,6 +27,7 @@ const App = () => {
 					);
 				})}
 			</div>
+			<Filters></Filters>
 		</>
 	);
 };
@@ -40,6 +42,7 @@ const createTasks = (event, tasks, setTasks) => {
 	};
 
 	setTasks([...tasks, newTask]);
+	event.target.reset();
 };
 
 const completeTask = (taskId, tasks, setTasks) => {

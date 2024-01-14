@@ -32,6 +32,7 @@ const App = () => {
 							{...task}
 							action={() => completeTask(task.id, tasks, setTasks)}
 							actionRemove={() => removeTask(task.id, tasks, setTasks)}
+							sendKey={task.id}
 						></Task>
 					);
 				})}

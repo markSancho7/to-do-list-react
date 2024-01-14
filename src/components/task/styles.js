@@ -15,6 +15,7 @@ const StyledCheckbox = styled.input`
 	margin-left: 10px;
 	margin-top: auto;
 	margin-bottom: auto;
+	display: none;
 `;
 const StyledLabel = styled.label`
 	color: white;
@@ -22,13 +23,15 @@ const StyledLabel = styled.label`
 	&::before {
 		content: '';
 		position: absolute;
-		width: 16px;
-		height: 16px;
+		width: 20px;
+		height: 20px;
 		border: 1px solid #fff;
-		border-radius: 10px;
+		border-radius: 100%;
 		transform: translateY(-50%);
-		left: 18px;
-		background-color: ${props => (props.completed ? 'green' : 'red')};
+		left: 10px;
+		background-image: url('../public/images 3/icon-check.svg');
+		background-size: cover;
+		background: ${({ $checkeado }) => ($checkeado ? '' : 'black')};
 		top: 50%;
 	}
 `;

@@ -6,13 +6,7 @@ import {
 	StyledNameTask
 } from './styles';
 
-const Task = ({
-	nameTask,
-	completed,
-	action,
-	actionRemove,
-	actionClearCompleted
-}) => {
+const Task = ({ nameTask, completed, action, actionRemove }) => {
 	return (
 		<StyledContainerTask>
 			<StyledContainerTask>
@@ -22,7 +16,7 @@ const Task = ({
 					onChange={action}
 					checked={completed}
 				></StyledCheckbox>
-				<StyledLabel htmlFor='check'></StyledLabel>
+				<StyledLabel htmlFor='check' checked={completed}></StyledLabel>
 				<StyledNameTask>{nameTask}</StyledNameTask>
 			</StyledContainerTask>
 			<StyledButton onClick={actionRemove}>X</StyledButton>

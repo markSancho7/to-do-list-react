@@ -28,7 +28,7 @@ const StyledLabel = styled.label`
 		border-radius: 10px;
 		transform: translateY(-50%);
 		left: 18px;
-		background-color: black;
+		background-color: ${props => (props.completed ? 'green' : 'red')};
 		top: 50%;
 	}
 `;
